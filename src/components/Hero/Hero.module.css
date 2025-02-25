@@ -1,5 +1,4 @@
 .section {
-  max-width: 320px;
   margin: 0 auto;
   background:
     linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
@@ -41,7 +40,7 @@
 
 @media only screen and (min-width: 768px) {
   .section {
-    max-width: 768px;
+    /* max-width: 768px; */
     background:
       linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
       url("../../assets/images/home-page/tablet-hero-bg.jpg") center center / cover no-repeat;
