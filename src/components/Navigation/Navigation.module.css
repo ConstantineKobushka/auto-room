@@ -1,0 +1,18 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.link {
+  padding: 24px 0;
+}
+.active {
+  color: var(--button-hover);
+}
+
+@media only screen and (min-width: 768px) {
+  .menu {
+    gap: 32px;
+  }
+}

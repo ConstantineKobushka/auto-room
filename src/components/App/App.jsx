@@ -10,18 +10,22 @@ const NotFoundPage = lazy(() =>
   import('../../pages/NotFoundPage/NotFoundPage.jsx')
 );
 
+import Layout from '../Layout/Layout.jsx';
+
 import './App.module.css';
 
 function App() {
   return (
-    <Suspense>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/catalog' element={<CatalogPage />} />
-        <Route path='/catalog/:id' element={<AutoPage />} />
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
+    <Layout>
+      <Suspense>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/catalog' element={<CatalogPage />} />
+          <Route path='/catalog/:id' element={<AutoPage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </Layout>
   );
 }
 

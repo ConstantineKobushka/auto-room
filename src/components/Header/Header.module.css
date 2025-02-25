@@ -1,0 +1,23 @@
+.header {
+  max-width: 320px;
+  margin: 0 auto;
+  background: var(--badges);
+  border-bottom: 1px solid var(--badges);
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    max-width: 768px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .header {
+    max-width: 1440px;
+  }
+}

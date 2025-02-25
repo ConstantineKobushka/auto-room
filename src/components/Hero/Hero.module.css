@@ -1,0 +1,89 @@
+.section {
+  max-width: 320px;
+  margin: 0 auto;
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+    url("../../assets/images/home-page/mobile-hero-bg.jpg") center center / cover no-repeat;
+  min-height: 432px;
+  text-align: center;
+  color: var(--white);
+}
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  padding-top: 250px;
+  margin-bottom: 8px;
+}
+.text {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  margin-bottom: 25px;
+}
+.link {
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 276px;
+  padding: 12px 99px;
+  border-radius: 12px;
+  background: var(--button);
+}
+
+@media (min-resolution: 192dpi) and (min-width: 320px) {
+  .section {
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+      url("../../assets/images/home-page/mobile-hero-bg@2x.jpg") center center / cover no-repeat;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .section {
+    max-width: 768px;
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+      url("../../assets/images/home-page/tablet-hero-bg.jpg") center center / cover no-repeat;
+    min-height: 700px;
+  }
+  .title {
+    font-size: 56px;
+    line-height: 72px; /* 120% */
+    padding-top: 440px;
+    margin-bottom: 16px;
+  }
+  .text {
+    font-size: 24px;
+    line-height: 32px; /* 133.333% */
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-resolution: 192dpi) and (min-width: 768px) {
+  .section {
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+      url("../../assets/images/home-page/tablet-hero-bg@2x.jpg") center center / cover no-repeat;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .section {
+    max-width: 1440px;
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+      url("../../assets/images/home-page/desktop-hero-bg.jpg") center center / cover no-repeat;
+  }
+  .title {
+    font-size: 60px;
+  }
+}
+
+@media (min-resolution: 192dpi) and (min-width: 1440px) {
+  .section {
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+      url("../../assets/images/home-page/desktop-hero-bg@2x.jpg") center center / cover no-repeat;
+  }
+}
