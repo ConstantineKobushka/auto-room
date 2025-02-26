@@ -3,15 +3,19 @@
   background:
     linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
     url("../../assets/images/home-page/mobile-hero-bg.jpg") center center / cover no-repeat;
-  min-height: 432px;
+  min-height: 650px;
   text-align: center;
   color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 60px;
 }
 .title {
   font-size: 24px;
   font-weight: 700;
   line-height: 32px;
-  padding-top: 250px;
   margin-bottom: 8px;
 }
 .text {
@@ -39,30 +43,15 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .section {
-    background:
-      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-      url("../../assets/images/home-page/tablet-hero-bg.jpg") center center / cover no-repeat;
-    min-height: 700px;
-  }
   .title {
     font-size: 56px;
     line-height: 72px; /* 120% */
-    padding-top: 440px;
     margin-bottom: 16px;
   }
   .text {
     font-size: 24px;
     line-height: 32px; /* 133.333% */
     margin-bottom: 40px;
-  }
-}
-
-@media (min-resolution: 192dpi) and (min-width: 768px) {
-  .section {
-    background:
-      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-      url("../../assets/images/home-page/tablet-hero-bg@2x.jpg") center center / cover no-repeat;
   }
 }
 
