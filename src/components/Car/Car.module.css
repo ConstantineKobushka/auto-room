@@ -1,0 +1,122 @@
+.section {
+  padding: 44px 0 52px;
+}
+.imageForm {
+}
+.img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 40px;
+}
+.description {
+}
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  padding-top: 20px;
+  margin-bottom: 8px;
+}
+.titleSpan {
+  font-size: 16px;
+  color: var(--gray);
+  margin-left: 16px;
+}
+.textWrap {
+  padding-left: 19px;
+  position: relative;
+  margin-bottom: 16px;
+}
+.textWrap::before {
+  position: absolute;
+  content: "";
+  background-image: url("/icons/location.svg");
+  background-repeat: no-repeat;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 15px;
+}
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px; /* 133.333% */
+  color: var(--button);
+  margin-bottom: 16px;
+}
+.text {
+  margin-bottom: 34px;
+}
+.subTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px; /* 120% */
+  margin-bottom: 15px;
+}
+.list {
+  margin-bottom: 55px;
+}
+.item {
+  padding-left: 24px;
+  margin-bottom: 8px;
+  position: relative;
+}
+.item::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url("/icons/check-circle.svg");
+}
+.calendar::before {
+  background-image: url("/icons/calendar.svg");
+}
+.car::before {
+  background-image: url("/icons/car.svg");
+}
+.gas::before {
+  background-image: url("/icons/gas.svg");
+}
+.tools::before {
+  background-image: url("/icons/tools.svg");
+}
+
+@media only screen and (min-width: 1440px) {
+  .section {
+    padding: 84px 0 104px;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 72px;
+  }
+  .imageForm {
+    max-width: 640px;
+  }
+  .description {
+    width: 488px;
+  }
+  .title {
+    font-size: 24px;
+    line-height: 32px; /* 133.333% */
+  }
+  .price {
+    margin-bottom: 32px;
+  }
+  .text {
+    margin-bottom: 68px;
+  }
+  .list {
+    margin-bottom: 110px;
+  }
+  .item {
+    margin-bottom: 16px;
+  }
+  .subTitle {
+    margin-bottom: 20px;
+  }
+}

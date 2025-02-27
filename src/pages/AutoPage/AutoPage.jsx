@@ -1,5 +1,7 @@
+import Car from '../../components/Car/Car';
+
 const AutoPage = () => {
-  return <div>AutoPage</div>;
+  return <Car />;
 };
 
 export default AutoPage;
