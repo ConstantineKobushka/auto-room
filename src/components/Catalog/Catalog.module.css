@@ -1,0 +1,122 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
+  gap: 48px 32px;
+  margin-bottom: 40px;
+}
+.item {
+  /* width: 100%; */
+  border: 1px solid red;
+}
+.inner {
+  position: relative;
+  margin-bottom: 16px;
+}
+.img {
+  border-radius: 14px;
+  width: 100%;
+  margin: 0 auto;
+}
+.favorite {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.svg {
+  stroke: var(--white);
+}
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.title {
+  font-size: 16px;
+  font-weight: 500;
+}
+.titleSpan {
+  color: var(--button);
+}
+.price {
+}
+.info {
+  display: flex;
+  flex-wrap: wrap;
+}
+.info + .info {
+  margin-top: 4px;
+}
+.infoSpan {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+  color: var(--gray);
+  padding: 0 6px;
+}
+.infoSpan + .infoSpan {
+  border-left: 1px solid var(--gray-light);
+}
+.infoSpan:first-child {
+  padding-left: 0;
+}
+.link {
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: none;
+  color: var(--white);
+  background-color: var(--button);
+  margin-top: 28px;
+  display: inline-block;
+}
+.button {
+  font-weight: 600;
+  display: block;
+  min-width: 156px;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid;
+  border-color: var(--button);
+}
+
+@media only screen and (min-width: 768px) {
+  .list {
+    margin-bottom: 80px;
+  }
+  .title {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .svg {
+    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .svg:hover,
+  .svg:focus {
+    stroke: var(--button-hover);
+  }
+  .link {
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .link:hover,
+  .link:focus {
+    background-color: var(--button-hover);
+  }
+  .button {
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .button:hover,
+  .button:focus {
+    border-color: var(--button-hover);
+  }
+}

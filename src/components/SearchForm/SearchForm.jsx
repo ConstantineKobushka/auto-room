@@ -20,15 +20,13 @@ const SearchForm = () => {
 
   const validationSchema = Yup.object().shape({
     carBrand: Yup.string().required('Choose a brand'),
-    pricePerHour: Yup.number()
-      .required('Choose a price')
-      .positive('Price must be positive'),
+    pricePerHour: Yup.number().required('Choose a price'),
     carMileageFrom: Yup.number()
-      .required('Choose a mileage from')
-      .positive('Mileage must be positive'),
+      .required('Choose a mileage')
+      .positive('Only positive'),
     carMileageTo: Yup.number()
-      .required('Choose a mileage to')
-      .positive('Mileage must be positive'),
+      .required('Choose a mileage')
+      .positive('Only positive'),
   });
 
   const handleSubmit = (values) => {
@@ -91,31 +89,34 @@ const SearchForm = () => {
           <label className={css.label} htmlFor={carMileageFrom}>
             Сar mileage / km
           </label>
-          <Field
-            className={css.inputFrom}
-            type='text'
-            name='carMileageFrom'
-            id={carMileageFrom}
-            placeholder='From '
-          />
-          <ErrorMessage
-            className={css.error}
-            name='carMileageFrom'
-            component='span'
-          />
 
-          <Field
-            className={css.inputTo}
-            type='text'
-            name='carMileageTo'
-            id={carMileageTo}
-            placeholder='To'
-          />
-          <ErrorMessage
-            className={css.error}
-            name='carMileageTo'
-            component='span'
-          />
+          <div className={css.inputInner}>
+            <Field
+              className={css.inputFrom}
+              type='text'
+              name='carMileageFrom'
+              id={carMileageFrom}
+              placeholder='From '
+            />
+            <ErrorMessage
+              className={`${css.error} ${css.errorLeft}`}
+              name='carMileageFrom'
+              component='span'
+            />
+
+            <Field
+              className={css.inputTo}
+              type='text'
+              name='carMileageTo'
+              id={carMileageTo}
+              placeholder='To'
+            />
+            <ErrorMessage
+              className={`${css.error} ${css.errorRight}`}
+              name='carMileageTo'
+              component='span'
+            />
+          </div>
         </div>
 
         <button className={css.button} type='submit'>
