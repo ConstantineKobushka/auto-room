@@ -71,12 +71,14 @@
   width: 16px;
   height: 16px;
   background-image: url("/icons/check-circle.svg");
+  background-repeat: no-repeat;
 }
 .calendar::before {
   background-image: url("/icons/calendar.svg");
 }
 .car::before {
   background-image: url("/icons/car.svg");
+  height: 12px;
 }
 .gas::before {
   background-image: url("/icons/gas.svg");

@@ -2,17 +2,17 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage.jsx'));
-const AutoPage = lazy(() => import('../../pages/AutoPage/AutoPage.jsx'));
 const CatalogPage = lazy(() =>
   import('../../pages/CatalogPage/CatalogPage.jsx')
+);
+const CatalogDetailsPage = lazy(() =>
+  import('../../pages/CatalogDetailsPage/CatalogDetailsPage.jsx')
 );
 const NotFoundPage = lazy(() =>
   import('../../pages/NotFoundPage/NotFoundPage.jsx')
 );
 
 import Layout from '../Layout/Layout.jsx';
-
-import './App.module.css';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/catalog' element={<CatalogPage />} />
-          <Route path='/catalog/:id' element={<AutoPage />} />
+          <Route path='/catalog/:id' element={<CatalogDetailsPage />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Suspense>

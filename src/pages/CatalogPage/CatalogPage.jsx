@@ -1,6 +1,6 @@
 import Container from '../../components/Container/Container';
 import SearchForm from '../../components/SearchForm/SearchForm';
-import Catalog from '../../components/Catalog/Catalog';
+import CarList from '../../components/CarsList/CarsList';
 
 import css from './CatalogPage.module.css';
 
@@ -10,7 +10,7 @@ const CatalogPage = () => {
       <Container>
         <h1 className={css.visuallyHidden}>Find your perfect rental car</h1>
         <SearchForm />
-        <Catalog />
+        <CarList />
       </Container>
     </section>
   );

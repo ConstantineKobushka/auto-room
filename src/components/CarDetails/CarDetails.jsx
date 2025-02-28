@@ -1,11 +1,25 @@
+import { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
 import Container from '../Container/Container';
 import OrderForm from '../OrderForm/OrderForm';
 
+import { apiGetCarById } from '../../redux/operations';
+
 import car from '../../assets/images/car/carb.jpg';
 
-import css from './Car.module.css';
+import css from './CarDetails.module.css';
 
-const Car = () => {
+const CarDetails = () => {
+  const dispatch = useDispatch();
+  const { carId } = useParams();
+
+  useEffect(() => {
+    dispatch(apiGetCarById(carId));
+  }, [dispatch, carId]);
+
   return (
     <section className={css.section}>
       <Container>
@@ -62,4 +76,4 @@ const Car = () => {
   );
 };
 
-export default Car;
+export default CarDetails;
