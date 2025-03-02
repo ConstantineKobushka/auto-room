@@ -8,8 +8,8 @@ import {
   selectIsLoading,
   selectPage,
   selectTotalPages,
-} from '../../redux/selectors';
-import { apiGetCars } from '../../redux/operations';
+} from '../../redux/cars/selectors';
+import { apiGetCars } from '../../redux/cars/operations';
 
 import css from './CarsList.module.css';
 

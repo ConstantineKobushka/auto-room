@@ -8,8 +8,8 @@ import Container from '../Container/Container';
 import OrderForm from '../OrderForm/OrderForm';
 import Loader from '../Loader/Loader';
 
-import { apiGetCarById } from '../../redux/operations';
-import { selectCar, selectIsLoading } from '../../redux/selectors';
+import { apiGetCarById } from '../../redux/cars/operations';
+import { selectCar, selectIsLoading } from '../../redux/cars/selectors';
 
 import {
   extractIdFromUrl,

@@ -7,7 +7,7 @@ export const carsInstans = axios.create({
 
 export const apiGetCars = createAsyncThunk(
   'cars/getCars',
-  async ({ page, limit = 2 }, thunkApi) => {
+  async ({ page, limit = 10 }, thunkApi) => {
     try {
       const { data } = await carsInstans.get(
         `/cars?limit=${limit}&page=${page}`
