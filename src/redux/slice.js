@@ -15,12 +15,6 @@ const carsSlice = createSlice({
   name: 'cars',
   initialState: INITIAL_STATE,
   reducers: {
-    incrementPage: (state) => {
-      if (state.page < state.totalPages) {
-        state.page += 1;
-        console.log(state.page);
-      }
-    },
     resetCars: (state) => {
       state.carsData = [];
       state.page = 1;

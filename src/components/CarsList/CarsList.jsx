@@ -10,7 +10,6 @@ import {
   selectTotalPages,
 } from '../../redux/selectors';
 import { apiGetCars } from '../../redux/operations';
-// import { incrementPage, resetCars } from '../../redux/slice';
 
 import css from './CarsList.module.css';
 
@@ -21,7 +20,6 @@ const CarsList = () => {
   const isLoading = useSelector(selectIsLoading);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
-  console.log(page);
 
   useEffect(() => {
     if (page === 1) {
@@ -39,12 +37,11 @@ const CarsList = () => {
       const params = {
         page,
       };
-      console.log(params);
       dispatch(apiGetCars(params));
     }
   };
 
-  if (isLoading) {
+  if (isLoading && page === 1) {
     return <Loader />;
   }
 
@@ -54,6 +51,7 @@ const CarsList = () => {
         {Array.isArray(cars) &&
           cars.map((car) => <CarsItem key={car.id} car={car} />)}
       </ul>
+      {isLoading && <Loader />}
       {page <= totalPages && (
         <button className={css.button} onClick={handleLoadMore} type='button'>
           Load more
