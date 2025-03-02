@@ -7,12 +7,14 @@ export const carsInstans = axios.create({
 
 export const apiGetCars = createAsyncThunk(
   'cars/getCars',
-  async ({ page = 1, limit = 8 }, thunkApi) => {
+  async ({ page, limit = 2 }, thunkApi) => {
+    console.log(page);
     try {
       const { data } = await carsInstans.get(
-        `/cars?page=${page}&limit=${limit}`
+        `/cars?limit=${limit}&page=${page}`
       );
-      return { ...data, page };
+      console.log(data);
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -20,11 +22,10 @@ export const apiGetCars = createAsyncThunk(
 );
 
 export const apiGetCarById = createAsyncThunk(
-  'cars/getCars',
+  'car/getCarsById',
   async (id, thunkApi) => {
     try {
       const { data } = await carsInstans.get(`/cars/${id}`);
-      console.log(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

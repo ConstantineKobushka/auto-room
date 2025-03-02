@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { extractLocation, formatMileAge } from '../../utils/utils';
+
 import css from './CarsItem.module.css';
 
 const CarsItem = ({ car }) => {
@@ -15,25 +17,6 @@ const CarsItem = ({ car }) => {
     mileage,
     id,
   } = car;
-
-  const extractLocation = (address, type) => {
-    if (!address || typeof address !== 'string') return 'Location unknown';
-
-    const parts = address.split(',').map((part) => part.trim());
-
-    if (type === 'city') {
-      return parts.length > 1 ? parts[1] : 'Kyiv';
-    } else if (type === 'country') {
-      return parts.length > 2 ? parts[2] : 'Ukraine';
-    }
-
-    return 'Location unknown';
-  };
-
-  const formatMileAge = (number, unit = 'km') => {
-    if (typeof number !== 'number' || isNaN(number)) return 'Invalid distance';
-    return new Intl.NumberFormat('uk-UA').format(number) + ` ${unit}`;
-  };
 
   return (
     <li className={css.item}>
@@ -68,7 +51,7 @@ const CarsItem = ({ car }) => {
         <span className={css.infoSpan}>{type}</span>
         <span className={css.infoSpan}>{formatMileAge(mileage)}</span>
       </div>
-      <Link className={css.link} to={`/catalog/:${id}`}>
+      <Link className={css.link} to={`/catalog/${id}`}>
         Read more
       </Link>
     </li>

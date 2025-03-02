@@ -1,78 +1,102 @@
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
 import Container from '../Container/Container';
 import OrderForm from '../OrderForm/OrderForm';
+import Loader from '../Loader/Loader';
 
 import { apiGetCarById } from '../../redux/operations';
+import { selectCar, selectIsLoading } from '../../redux/selectors';
 
-import car from '../../assets/images/car/carb.jpg';
+import {
+  extractIdFromUrl,
+  extractLocation,
+  formatMileAge,
+} from '../../utils/utils';
 
 import css from './CarDetails.module.css';
 
 const CarDetails = () => {
+  const car = useSelector(selectCar);
+  const isLoading = useSelector(selectIsLoading);
+
   const dispatch = useDispatch();
-  const { carId } = useParams();
+  const { id } = useParams();
+  console.log(car);
 
   useEffect(() => {
-    dispatch(apiGetCarById(carId));
-  }, [dispatch, carId]);
+    if (id) {
+      dispatch(apiGetCarById(id));
+    }
+  }, [dispatch, id]);
+
+  if (isLoading || !car) {
+    return <Loader />;
+  }
 
   return (
-    <section className={css.section}>
-      <Container>
-        <div className={css.wrapper}>
-          <div className={css.imageForm}>
-            <img className={css.img} src={car} alt='Car' />
-            <OrderForm />
-          </div>
-          <div className={css.description}>
-            <h1 className={css.title}>
-              Buick Enclave, 2008
-              <span className={css.titleSpan}>Id: 9582</span>
-            </h1>
-            <div className={css.textWrap}>
-              <span className={css.span}>Kyiv, Ukraine</span>
-              <span className={css.span}>Mileage: 5 858 km</span>
+    car !== null && (
+      <section className={css.section}>
+        <Container>
+          <div className={css.wrapper}>
+            <div className={css.imageForm}>
+              <img className={css.img} src={car.img} alt={car.brand} />
+              <OrderForm />
             </div>
-            <p className={css.price}>$40</p>
-            <p className={css.text}>
-              The Buick Enclave is a stylish and spacious SUV known for its
-              comfortable ride and luxurious features.
-            </p>
-            <h3 className={css.subTitle}>Rental Conditions:</h3>
-            <ul className={css.list}>
-              <li className={css.item}>Minimum age : 25</li>
-              <li className={css.item}>Security deposite required</li>
-              <li className={css.item}>Valid driver’s license</li>
-            </ul>
-            <h3 className={css.subTitle}>Car Specifications:</h3>
-            <ul className={css.list}>
-              <li className={`${css.item} ${css.calendar}`}>Year: 2008</li>
-              <li className={`${css.item} ${css.car}`}>Type: Suv</li>
-              <li className={`${css.item} ${css.gas}`}>
-                Fuel Consumption: 10.5
-              </li>
-              <li className={`${css.item} ${css.tools}`}>
-                Engine Size: 3.6L V6
-              </li>
-            </ul>
+            <div className={css.description}>
+              <h1 className={css.title}>
+                {car.brand} {car.model}, {car.year}
+                <span className={css.titleSpan}>
+                  Id: {extractIdFromUrl(car.img)}
+                </span>
+              </h1>
+              <div className={css.textWrap}>
+                <span className={css.span}>
+                  {extractLocation(car.address, 'city')},
+                  {extractLocation(car.address, 'country')}
+                </span>
+                <span className={css.span}>
+                  Mileage: {formatMileAge(car.mileage)}
+                </span>
+              </div>
+              <p className={css.price}>${car.rentalPrice}</p>
+              <p className={css.text}>{car.description}</p>
+              <h3 className={css.subTitle}>Rental Conditions:</h3>
+              <ul className={css.list}>
+                {car.rentalConditions.map((item) => (
+                  <li className={css.item} key={nanoid()}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <h3 className={css.subTitle}>Car Specifications:</h3>
+              <ul className={css.list}>
+                <li className={`${css.item} ${css.calendar}`}>
+                  Year: {car.year}
+                </li>
+                <li className={`${css.item} ${css.car}`}>Type: {car.type}</li>
+                <li className={`${css.item} ${css.gas}`}>
+                  Fuel Consumption: {car.fuelConsumption}
+                </li>
+                <li className={`${css.item} ${css.tools}`}>{car.engineSize}</li>
+              </ul>
 
-            <h3 className={css.subTitle}>Accessories and functionalities:</h3>
-            <ul className={css.list}>
-              <li className={css.item}>Leather seats</li>
-              <li className={css.item}>Panoramic sunroof</li>
-              <li className={css.item}>Remote start</li>
-              <li className={css.item}>Blind-spot monitoring</li>
-              <li className={css.item}>Power liftgate</li>
-              <li className={css.item}>Premium audio system</li>
-            </ul>
+              <h3 className={css.subTitle}>Accessories and functionalities:</h3>
+              <ul className={css.list}>
+                {car.functionalities.map((item) => (
+                  <li className={css.item} key={nanoid()}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    )
   );
 };
 

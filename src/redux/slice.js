@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { apiGetCars } from './operations';
+import { apiGetCarById, apiGetCars } from './operations';
 
 const INITIAL_STATE = {
-  carsData: null,
+  carsData: [],
+  car: null,
   isLoading: false,
   error: null,
   page: 1,
-  totalCars: null,
   totalPages: null,
+  totalCars: null,
 };
 
 const carsSlice = createSlice({
@@ -17,6 +18,7 @@ const carsSlice = createSlice({
     incrementPage: (state) => {
       if (state.page < state.totalPages) {
         state.page += 1;
+        console.log(state.page);
       }
     },
     resetCars: (state) => {
@@ -34,23 +36,31 @@ const carsSlice = createSlice({
       .addCase(apiGetCars.fulfilled, (state, action) => {
         state.isLoading = false;
 
-        if (state.carsData === null) {
+        if (state.page === 1) {
           state.carsData = action.payload.cars;
         } else {
-          const newCars = action.payload.cars.filter(
-            (newCar) =>
-              !state.carsData.some(
-                (existingCar) => existingCar.id === newCar.id
-              )
-          );
-          state.carsData = [...state.carsData, ...newCars];
+          state.carsData = [...state.carsData, ...action.payload.cars];
         }
-        state.totalCars = action.payload.totalCars;
-        state.page = action.payload.page;
+
+        state.page = Number(action.payload.page) + 1;
         state.totalPages = action.payload.totalPages;
+        state.totalCars = action.payload.totalCars;
       })
 
       .addCase(apiGetCars.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(apiGetCarById.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(apiGetCarById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.car = action.payload;
+      })
+      .addCase(apiGetCarById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       }),

@@ -26,6 +26,8 @@
   padding-left: 19px;
   position: relative;
   margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
 }
 .textWrap::before {
   position: absolute;

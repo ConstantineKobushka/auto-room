@@ -10,7 +10,7 @@ import {
   selectTotalPages,
 } from '../../redux/selectors';
 import { apiGetCars } from '../../redux/operations';
-import { incrementPage } from '../../redux/slice';
+// import { incrementPage, resetCars } from '../../redux/slice';
 
 import css from './CarsList.module.css';
 
@@ -21,14 +21,26 @@ const CarsList = () => {
   const isLoading = useSelector(selectIsLoading);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
+  console.log(page);
 
   useEffect(() => {
-    dispatch(apiGetCars({ page }));
-  }, [dispatch, page]);
+    if (page === 1) {
+      const params = {
+        page: 1,
+      };
+
+      dispatch(apiGetCars(params));
+    }
+    return () => console.log('message');
+  }, [dispatch]);
 
   const handleLoadMore = () => {
-    if (page < totalPages) {
-      dispatch(incrementPage());
+    if (page <= totalPages) {
+      const params = {
+        page,
+      };
+      console.log(params);
+      dispatch(apiGetCars(params));
     }
   };
 
@@ -42,8 +54,8 @@ const CarsList = () => {
         {Array.isArray(cars) &&
           cars.map((car) => <CarsItem key={car.id} car={car} />)}
       </ul>
-      {page < totalPages && (
-        <button className={css.button} onClick={handleLoadMore}>
+      {page <= totalPages && (
+        <button className={css.button} onClick={handleLoadMore} type='button'>
           Load more
         </button>
       )}

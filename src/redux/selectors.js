@@ -1,4 +1,5 @@
 export const selectCarsData = (state) => state.cars.carsData;
+export const selectCar = (state) => state.cars.car;
 export const selectIsLoading = (state) => state.cars.isLoading;
 export const selectErro = (state) => state.cars.error;
 export const selectPage = (state) => state.cars.page;
