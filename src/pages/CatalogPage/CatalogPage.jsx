@@ -10,7 +10,7 @@ const CatalogPage = () => {
       <Container>
         <h1 className={css.visuallyHidden}>Find your perfect rental car</h1>
         <SearchForm />
-        {/* <CarList /> */}
+        <CarList />
       </Container>
     </section>
   );

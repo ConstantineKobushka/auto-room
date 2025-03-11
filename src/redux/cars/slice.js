@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { apiGetCarById, apiGetCars } from './operations';
 
 const INITIAL_STATE = {
-  carsData: [],
+  cars: null,
   car: null,
   isLoading: false,
   error: null,
@@ -16,7 +16,7 @@ const carsSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     resetCars: (state) => {
-      state.carsData = [];
+      state.cars = null;
       state.page = 1;
     },
   },
@@ -31,9 +31,9 @@ const carsSlice = createSlice({
         state.isLoading = false;
 
         if (state.page === 1) {
-          state.carsData = action.payload.cars;
+          state.cars = action.payload.cars;
         } else {
-          state.carsData = [...state.carsData, ...action.payload.cars];
+          state.cars = [...state.cars, ...action.payload.cars];
         }
 
         state.page = Number(action.payload.page) + 1;

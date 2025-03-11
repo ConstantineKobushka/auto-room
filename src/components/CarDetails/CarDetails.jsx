@@ -9,7 +9,7 @@ import OrderForm from '../OrderForm/OrderForm';
 import Loader from '../Loader/Loader';
 
 import { apiGetCarById } from '../../redux/cars/operations';
-import { selectCar, selectIsLoading } from '../../redux/cars/selectors';
+import { selectCar, selectCarsIsLoading } from '../../redux/cars/selectors';
 
 import {
   extractIdFromUrl,
@@ -21,7 +21,7 @@ import css from './CarDetails.module.css';
 
 const CarDetails = () => {
   const car = useSelector(selectCar);
-  const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectCarsIsLoading);
 
   const dispatch = useDispatch();
   const { id } = useParams();

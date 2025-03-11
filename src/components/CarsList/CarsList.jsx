@@ -4,10 +4,10 @@ import Loader from '../Loader/Loader';
 import CarsItem from '../CarsItem/CarsItem';
 
 import {
-  selectCarsData,
-  selectIsLoading,
-  selectPage,
-  selectTotalPages,
+  selectCars,
+  selectCarsIsLoading,
+  selectCarsPage,
+  selectCarsTotalPages,
 } from '../../redux/cars/selectors';
 import { apiGetCars } from '../../redux/cars/operations';
 
@@ -16,10 +16,10 @@ import css from './CarsList.module.css';
 const CarsList = () => {
   const dispatch = useDispatch();
 
-  const cars = useSelector(selectCarsData);
-  const isLoading = useSelector(selectIsLoading);
-  const page = useSelector(selectPage);
-  const totalPages = useSelector(selectTotalPages);
+  const cars = useSelector(selectCars);
+  const isLoading = useSelector(selectCarsIsLoading);
+  const page = useSelector(selectCarsPage);
+  const totalPages = useSelector(selectCarsTotalPages);
 
   useEffect(() => {
     if (page === 1) {
