@@ -89,3 +89,14 @@ img {
   height: auto;
   display: block;
 }
+
+.react-select__menu-list::-webkit-scrollbar {
+  width: 8px;
+  height: 128px;
+}
+
+.react-select__menu-list::-webkit-scrollbar-thumb {
+  background-color: var(--gray-light);
+  border-radius: 10px;
+  cursor: pointer;
+}
