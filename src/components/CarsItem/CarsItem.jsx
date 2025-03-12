@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { extractLocation, formatMileAge } from '../../utils/utils';
+import { extractLocation, formatMileAge } from '../../utils/functions';
 
 import css from './CarsItem.module.css';
 

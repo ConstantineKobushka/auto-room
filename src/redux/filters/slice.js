@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { apiGetCarsBrends } from './operations';
+import { apiGetCarBrends } from './operations';
 
 const INITIAL_STATE = {
-  carsBrands: null,
+  carBrands: null,
   isLoading: false,
   error: null,
 };
@@ -13,9 +13,18 @@ const filtersSlice = createSlice({
   initialState: INITIAL_STATE,
   extraReducers: (builder) =>
     builder
-      .addCase(apiGetCarsBrends.pending, (state) => {})
-      .addCase(apiGetCarsBrends.fulfilled, (state, action) => {})
-      .addCase(apiGetCarsBrends.rejected, (state, action) => {}),
+      .addCase(apiGetCarBrends.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(apiGetCarBrends.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.carBrands = action.payload;
+      })
+      .addCase(apiGetCarBrends.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      }),
 });
 
 export const filtersReducer = filtersSlice.reducer;

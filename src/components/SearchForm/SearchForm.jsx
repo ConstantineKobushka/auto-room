@@ -1,10 +1,14 @@
-import { useId } from 'react';
+import { useEffect, useId } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
 import Select, { components } from 'react-select';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+import { apiGetCarBrends } from '../../redux/filters/operations';
+
 import css from './SearchForm.module.css';
+import { selectCarBrands } from '../../redux/filters/selectors';
 
 const DropdownIndicator = (props) => {
   const { menuIsOpen } = props.selectProps;
@@ -26,29 +30,32 @@ const DropdownIndicator = (props) => {
 };
 
 const SearchForm = () => {
-  const carBrand = useId();
+  const dispatch = useDispatch();
+  const carBrands = useSelector(selectCarBrands);
+  console.log(carBrands);
+
+  useEffect(() => {
+    dispatch(apiGetCarBrends());
+  }, [dispatch]);
+
+  const brand = useId();
   const pricePerHour = useId();
   const carMileageFrom = useId();
   const carMileageTo = useId();
 
   const initialValues = {
-    carBrand: '',
+    brand: '',
     pricePerHour: '',
     carMileageFrom: '',
     carMileageTo: '',
   };
 
-  const brandOptions = [
-    { value: 'Aston Martin', label: 'Aston Martin' },
-    { value: 'Audi', label: 'Audi' },
-    { value: 'BMW', label: 'BMW' },
-    { value: 'Bentley', label: 'Bentley' },
-    { value: 'Buick', label: 'Buick' },
-    { value: 'Chevrolet', label: 'Chevrolet' },
-    { value: 'Chrysler', label: 'Chrysler' },
-    { value: 'GMC', label: 'GMC' },
-    { value: 'HUMMER', label: 'HUMMER' },
-  ];
+  const brandOptions = Array.isArray(carBrands)
+    ? carBrands.map((brand) => ({
+        value: brand,
+        label: brand,
+      }))
+    : [];
 
   const priceOptions = [
     { value: '20', label: '20' },
@@ -57,7 +64,7 @@ const SearchForm = () => {
   ];
 
   const validationSchema = Yup.object().shape({
-    carBrand: Yup.string().required('Choose a brand'),
+    brand: Yup.string().required('Choose a brand'),
     pricePerHour: Yup.number().required('Choose a price'),
     carMileageFrom: Yup.number()
       .required('Choose a mileage')
@@ -68,7 +75,7 @@ const SearchForm = () => {
   });
 
   const handleSubmit = (values) => {
-    console.log(values);
+    dispatch(apiGetCarBrends(values));
   };
 
   const customStyles = {
@@ -94,7 +101,6 @@ const SearchForm = () => {
       ...styles,
       fontFamily: 'Manrope',
       fontSize: '16px',
-      fontStyle: 'normal',
       fontWeight: '500',
       lineHeight: '20px',
       color: 'var(--main)',
@@ -182,31 +188,26 @@ const SearchForm = () => {
       {({ values, setFieldValue, setFieldTouched }) => (
         <Form className={css.form}>
           <div className={css.selectWrapper}>
-            <label className={css.label} htmlFor={carBrand}>
+            <label className={css.label} htmlFor={brand}>
               Car brand
             </label>
             <Select
-              name='carBrand'
-              id={carBrand}
+              name='brand'
+              id={brand}
               placeholder='Choose a brand'
               options={brandOptions}
               value={brandOptions.find(
-                (option) => option.value === values.carBrand
+                (option) => option.value === values.brand
               )}
               onChange={(selectedOption) =>
-                setFieldValue('carBrand', selectedOption.value)
+                setFieldValue('brand', selectedOption.value)
               }
-              onBlur={() => setFieldTouched('carBrand', true)}
+              onBlur={() => setFieldTouched('brand', true)}
               styles={customStyles}
               classNamePrefix='react-select'
-              menuPortalTarget={document.body}
               components={{ DropdownIndicator }}
             />
-            <ErrorMessage
-              className={css.error}
-              name='carBrand'
-              component='span'
-            />
+            <ErrorMessage className={css.error} name='brand' component='span' />
           </div>
 
           <div className={css.selectWrapper}>
@@ -227,7 +228,6 @@ const SearchForm = () => {
               onBlur={() => setFieldTouched('pricePerHour', true)}
               styles={customStyles}
               classNamePrefix='react-select'
-              menuPortalTarget={document.body}
               components={{ DropdownIndicator }}
             />
             <ErrorMessage

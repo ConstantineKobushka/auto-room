@@ -1,17 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
-export const carsInstans = axios.create({
-  baseURL: 'https://car-rental-api.goit.global/',
-});
+import { carsInstans } from '../../utils/axiosInstans';
 
 export const apiGetCars = createAsyncThunk(
   'cars/getCars',
-  async ({ page, limit = 10 }, thunkApi) => {
+  async (params, thunkApi) => {
     try {
-      const { data } = await carsInstans.get(
-        `/cars?limit=${limit}&page=${page}`
-      );
+      const { data } = await carsInstans.get('/cars', params);
       console.log(data);
       return data;
     } catch (error) {

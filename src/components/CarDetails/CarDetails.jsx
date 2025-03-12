@@ -15,7 +15,7 @@ import {
   extractIdFromUrl,
   extractLocation,
   formatMileAge,
-} from '../../utils/utils';
+} from '../../utils/functions';
 
 import css from './CarDetails.module.css';
 

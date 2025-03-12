@@ -1,1 +1,1 @@
-export const selectBrands = (state) => state.filters.carsBrands;
+export const selectCarBrands = (state) => state.filters.carBrands;

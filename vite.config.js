@@ -9,5 +9,9 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
+    mimeTypes: {
+      woff: 'font/woff',
+      woff2: 'font/woff2',
+    },
   },
 });
