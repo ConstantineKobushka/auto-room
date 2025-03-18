@@ -36,6 +36,7 @@ const CarsList = () => {
     if (page <= totalPages) {
       const params = {
         page,
+        limit: 10,
       };
       dispatch(apiGetCars(params));
     }

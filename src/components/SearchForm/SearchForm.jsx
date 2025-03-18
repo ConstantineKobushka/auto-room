@@ -9,6 +9,8 @@ import { apiGetCarBrends } from '../../redux/filters/operations';
 
 import css from './SearchForm.module.css';
 import { selectCarBrands } from '../../redux/filters/selectors';
+import { apiGetCars } from '../../redux/cars/operations';
+import { resetCars } from '../../redux/cars/slice';
 
 const DropdownIndicator = (props) => {
   const { menuIsOpen } = props.selectProps;
@@ -60,6 +62,12 @@ const SearchForm = () => {
     { value: '20', label: '20' },
     { value: '30', label: '30' },
     { value: '40', label: '40' },
+    { value: '50', label: '50' },
+    { value: '60', label: '60' },
+    { value: '70', label: '70' },
+    { value: '80', label: '80' },
+    { value: '90', label: '90' },
+    { value: '100', label: '100' },
   ];
 
   const validationSchema = Yup.object().shape({
@@ -69,13 +77,27 @@ const SearchForm = () => {
       .required('Choose a mileage')
       .positive('Only positive'),
     carMileageTo: Yup.number()
-      .required('Choose a mileage')
+      // .required('Choose a mileage')
       .positive('Only positive'),
   });
 
   const handleSubmit = (values) => {
-    dispatch(apiGetCarBrends(values));
+    console.log(values);
+    const searchValue = {
+      brand: values.brand,
+      pricePerHour: +values.pricePerHour,
+      carMileageFrom: +values.carMileageFrom,
+      carMileageTo: +values.carMileageTo,
+    };
+    console.log(searchValue);
+    dispatch(resetCars());
+    dispatch(apiGetCars(searchValue));
   };
+
+  // brand: 'Buick';
+  // carMileageFrom: '1000';
+  // carMileageTo: '6000';
+  // pricePerHour: '20';
 
   const customStyles = {
     control: (styles) => ({
