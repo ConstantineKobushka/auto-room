@@ -32,7 +32,6 @@ const DropdownIndicator = (props) => {
 const SearchForm = () => {
   const dispatch = useDispatch();
   const carBrands = useSelector(selectCarBrands);
-  console.log(carBrands);
 
   useEffect(() => {
     dispatch(apiGetCarBrends());

@@ -30,7 +30,6 @@ const CarsList = () => {
 
       dispatch(apiGetCars(params));
     }
-    return () => console.log('message');
   }, [dispatch]);
 
   const handleLoadMore = () => {
