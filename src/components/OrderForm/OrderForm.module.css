@@ -32,6 +32,10 @@ input::placeholder {
 .input + .input {
   margin-top: 16px;
 }
+.datepickerWrapper {
+  margin: 16px 0;
+  width: 100%;
+}
 .textarea {
   height: 88px;
   resize: none;
