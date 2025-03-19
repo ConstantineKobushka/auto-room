@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -59,75 +59,64 @@ const OrderForm = () => {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        {({ setFieldValue, values }) => {
-          useEffect(() => {
-            setFieldValue('booking', selectedDate);
-          }, [selectedDate, setFieldValue]);
+        {({ setFieldValue }) => (
+          <Form className={css.form}>
+            <Field
+              className={css.input}
+              type='text'
+              name='name'
+              placeholder='Name*'
+            />
+            <ErrorMessage className={css.error} name='name' component='span' />
 
-          return (
-            <Form className={css.form}>
-              <Field
-                className={css.input}
-                type='text'
-                name='name'
-                placeholder='Name*'
-              />
-              <ErrorMessage
-                className={css.error}
-                name='name'
-                component='span'
-              />
+            <Field
+              className={css.input}
+              type='email'
+              name='email'
+              placeholder='Email*'
+            />
+            <ErrorMessage className={css.error} name='email' component='span' />
 
-              <Field
-                className={css.input}
-                type='email'
-                name='email'
-                placeholder='Email*'
-              />
-              <ErrorMessage
-                className={css.error}
-                name='email'
-                component='span'
-              />
+            <DatePicker
+              className={css.input}
+              wrapperClassName={css.datepickerWrapper}
+              selected={selectedDate}
+              onChange={(date) => {
+                setSelectedDate(date);
+                setFieldValue('booking', date);
+              }}
+              minDate={new Date()}
+              maxDate={
+                new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+              }
+              dateFormat='dd-MM-yyyy'
+              placeholderText='Booking date'
+              name='booking'
+            />
+            <ErrorMessage
+              className={css.error}
+              name='booking'
+              component='span'
+            />
 
-              <DatePicker
-                className={css.input}
-                wrapperClassName={css.datepickerWrapper}
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                minDate={new Date()}
-                maxDate={
-                  new Date(new Date().setFullYear(new Date().getFullYear() + 1))
-                }
-                dateFormat='dd-MM-yyyy'
-                placeholderText='Booking date'
-                name='booking'
-              />
-              <ErrorMessage
-                className={css.error}
-                name='booking'
-                component='span'
-              />
+            <Field
+              className={`${css.input} ${css.textarea}`}
+              as='textarea'
+              type='text'
+              name='comment'
+              placeholder='Comment'
+            />
+            <ErrorMessage
+              className={css.error}
+              name='comment'
+              component='span'
+            />
 
-              <Field
-                className={`${css.input} ${css.textarea}`}
-                as='textarea'
-                type='text'
-                name='comment'
-                placeholder='Comment'
-              />
-              <ErrorMessage
-                className={css.error}
-                name='comment'
-                component='span'
-              />
-
-              <button className={css.button} type='submit'>
-                Send
-              </button>
-            </Form>
-          );
-        }}
+            <button className={css.button} type='submit'>
+              Send
+            </button>
+          </Form>
+        )}
       </Formik>
       <Toaster />
     </div>

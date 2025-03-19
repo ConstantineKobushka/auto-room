@@ -19,6 +19,5 @@ export const formatMileAge = (number, unit = 'km') => {
 
 export const extractIdFromUrl = (url) => {
   const carId = parseInt(url.split('/').slice(-1));
-  console.log(carId);
   return carId;
 };
