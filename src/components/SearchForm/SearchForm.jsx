@@ -76,28 +76,22 @@ const SearchForm = () => {
     carMileageFrom: Yup.number()
       .required('Choose a mileage')
       .positive('Only positive'),
-    carMileageTo: Yup.number()
-      // .required('Choose a mileage')
-      .positive('Only positive'),
+    carMileageTo: Yup.number().positive('Only positive'),
   });
 
   const handleSubmit = (values) => {
-    console.log(values);
     const searchValue = {
       brand: values.brand,
-      pricePerHour: +values.pricePerHour,
-      carMileageFrom: +values.carMileageFrom,
-      carMileageTo: +values.carMileageTo,
+      rentalPrice: values.pricePerHour,
+      minMileage: values.carMileageFrom,
+      maxMileage: values.carMileageTo,
+      page: 1,
+      limit: 10,
     };
     console.log(searchValue);
     dispatch(resetCars());
     dispatch(apiGetCars(searchValue));
   };
-
-  // brand: 'Buick';
-  // carMileageFrom: '1000';
-  // carMileageTo: '6000';
-  // pricePerHour: '20';
 
   const customStyles = {
     control: (styles) => ({

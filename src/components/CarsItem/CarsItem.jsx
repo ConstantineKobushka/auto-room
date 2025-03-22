@@ -30,7 +30,7 @@ const CarsItem = ({ car }) => {
         />
         <button className={css.favorite}>
           <svg className={css.svg} width='16' height='16'>
-            <use href='/icons/icons-sprite.svg#heard'></use>
+            <use href='/icons/icons-sprite.svg#heard-blue'></use>
           </svg>
         </button>
       </div>

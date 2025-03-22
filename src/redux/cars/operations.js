@@ -22,7 +22,6 @@ export const apiGetCars = createAsyncThunk(
   async (params, thunkApi) => {
     try {
       const { data } = await carsInstans.get('/cars', { params });
-      console.log(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
