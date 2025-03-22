@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { toggleFavorite } from '../../redux/favorites/slice';
+import { selectFavoritesCars } from '../../redux/favorites/selectors';
 import { extractLocation, formatMileAge } from '../../utils/functions';
 
 import css from './CarsItem.module.css';
@@ -18,6 +21,14 @@ const CarsItem = ({ car }) => {
     id,
   } = car;
 
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavoritesCars);
+  const isFavorite = favorites[id] || false;
+
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(id));
+  };
+
   return (
     <li className={css.item}>
       <div className={css.inner}>
@@ -28,9 +39,13 @@ const CarsItem = ({ car }) => {
           width={279}
           height={268}
         />
-        <button className={css.favorite}>
+        <button className={css.favorite} onClick={handleToggleFavorite}>
           <svg className={css.svg} width='16' height='16'>
-            <use href='/icons/icons-sprite.svg#heard-blue'></use>
+            <use
+              href={`/icons/icons-sprite.svg#${
+                isFavorite ? 'heard-blue' : 'heard-white'
+              }`}
+            ></use>
           </svg>
         </button>
       </div>

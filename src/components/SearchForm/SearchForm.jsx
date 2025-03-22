@@ -88,7 +88,6 @@ const SearchForm = () => {
       page: 1,
       limit: 10,
     };
-    console.log(searchValue);
     dispatch(resetCars());
     dispatch(apiGetCars(searchValue));
   };
