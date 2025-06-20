@@ -1,6 +1,4 @@
-# 🚗
-
-# Auto Room – Smart Rental Solution for the Modern Driver
+# Auto Room – Smart Rental Solution for the Modern Driver 🚗
 
 ## 🔎 Project Description
 
