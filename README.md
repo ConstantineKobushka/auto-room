@@ -1,77 +1,77 @@
-# 🚗 Auto Room – Умное Арендное Решение для Современного Водителя
+# 🚗 Auto Room – Smart Rental Solution for the Modern Driver
 
-## 🔎 Описание проекта
+## 🔎 Project Description
 
-**Auto Room** — это инновационное веб-приложение для аренды автомобилей, созданное с акцентом на удобство, производительность и адаптивность. Приложение позволяет пользователям легко находить, просматривать и бронировать автомобили, а также сохранять избранное. Современный UI, быстрый отклик и гибкие фильтры делают аренду авто простой и приятной.
+**Auto Room** is an innovative car rental web application focused on convenience, performance, and responsiveness. The app allows users to easily search, view, and book cars, as well as save favorites. A modern UI, fast response, and flexible filters make car rental simple and enjoyable.
 
-Создано для тех, кто ценит **время**, **стиль** и **удобство**.
-
----
-
-## 🌟 Основной функционал
-
-- 🔍 **Мгновенный поиск и фильтрация**
-
-  - По марке, цене и пробегу
-  - Мгновенное отображение результата без перезагрузки
-
-- 📄 **Детальная карточка автомобиля**
-
-  - Фото в высоком качестве
-  - Технические характеристики
-  - Дополнительные опции
-
-- 📅 **Форма бронирования**
-
-  - Удобный выбор даты (datepicker)
-  - Проверка данных перед отправкой
-  - Подтверждение аренды
-
-- ❤️ **Избранное**
-
-  - Добавление автомобилей в избранное
-  - Сохранение даных между сессиями
-
-- 🔁 **Плавная пагинация**
-  - Загрузка по кнопке "Показать ещё"
+Built for those who value **time**, **style**, and **comfort**.
 
 ---
 
-## 🧰 Технологический стек
+## 🌟 Core Features
+
+- 🔍 **Instant Search & Filtering**
+
+  - By brand, price, and mileage
+  - Real-time results without page reload
+
+- 📄 **Detailed Car Card**
+
+  - High-quality images
+  - Technical specifications
+  - Additional options
+
+- 📅 **Booking Form**
+
+  - Convenient date picker
+  - Data validation before submission
+  - Rental confirmation
+
+- ❤️ **Favorites**
+
+  - Add cars to favorites
+  - Session-persistent storage
+
+- 🔁 **Smooth Pagination**
+  - Load more via "Show More" button
+
+---
+
+## 🧰 Tech Stack
 
 ### 🔨 Frontend
 
-- **Vite** – сверхбыстрый инструмент сборки
-- **React 19** – библиотека для построения пользовательских интерфейсов
-- **Redux Toolkit** – управление состоянием приложения
-- **React Router DOM v7** – маршрутизация
-- **Axios** – взаимодействие с API
-- **Redux Persist** – сохранение даных между сессиями
+- **Vite** – ultra-fast build tool
+- **React 19** – UI-building library
+- **Redux Toolkit** – state management
+- **React Router DOM v7** – routing
+- **Axios** – API interaction
+- **Redux Persist** – session persistence
 
-### 🎨 UI и UX
+### 🎨 UI & UX
 
-- **CSS Modules + modern-normalize** – модульные и сбалансированные стили
-- **react-select** – кастомные выпадающие списки
-- **react-datepicker** – удобный выбор даты
-- **react-hot-toast** – всплывающие уведомления
-- **react-spinners** – индикаторы загрузки
-- **clsx** – условное применение классов
+- **CSS Modules + modern-normalize** – modular and balanced styles
+- **react-select** – custom dropdowns
+- **react-datepicker** – easy date selection
+- **react-hot-toast** – toast notifications
+- **react-spinners** – loading indicators
+- **clsx** – conditional classnames
 
-### 🧪 Валидация и формы
+### 🧪 Validation & Forms
 
-- **Formik** – управление формами
-- **Yup** – схема валидации
+- **Formik** – form management
+- **Yup** – validation schema
 
 ---
 
-## 🚀 Установка и запуск
+## 🚀 Installation & Launch
 
-### 🔧 Требования:
+### 🔧 Requirements:
 
-- Node.js (рекомендуется последняя LTS версия)
-- npm или yarn
+- Node.js (latest LTS recommended)
+- npm or yarn
 
-### 📦 Установка:
+### 📦 Installation:
 
 ```bash
 git clone https://github.com/ConstantineKobushka/auto-room.git
