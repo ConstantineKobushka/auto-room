@@ -1,6 +1,6 @@
 # Auto Room – Smart Rental Solution for the Modern Driver 🚗
 
-🔗 **Live Demo:** [https://auto-room-pied.vercel.app/](https://auto-room-pied.vercel.app/)
+🔗 **Live Demo:** [https://auto-room-pied.vercel.app](https://auto-room-pied.vercel.app)
 
 ## 🔎 Project Description
 
