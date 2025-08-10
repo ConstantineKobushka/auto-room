@@ -2,6 +2,8 @@
 
 🔗 **Live Demo:** [https://auto-room-pied.vercel.app](https://auto-room-pied.vercel.app)
 
+![Auto Room Preview](preview.png)
+
 ## 🔎 Project Description
 
 **Auto Room** is an innovative car rental web application focused on convenience, performance, and responsiveness. The app allows users to easily search, view, and book cars, as well as save favorites. A modern UI, fast response, and flexible filters make car rental simple and enjoyable.
