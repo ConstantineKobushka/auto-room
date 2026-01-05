@@ -78,7 +78,8 @@ Built for those who value **time**, **style**, and **comfort**.
 ### 📦 Installation:
 
 ```bash
-git clone https://github.com/ConstantineKobushka/auto-room.git
+git clone https://github.com/ConstantineKobushka/auto-room
 cd auto-room
 npm install
+npm run dev
 ```

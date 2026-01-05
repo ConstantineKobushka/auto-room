@@ -78,7 +78,8 @@
 ### 📦 Встановлення:
 
 ```bash
-git clone https://github.com/ConstantineKobushka/auto-room.git
+git clone https://github.com/ConstantineKobushka/auto-room
 cd auto-room
 npm install
+npm run dev
 ```
